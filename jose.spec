@@ -1,5 +1,5 @@
 Name:           jose
-Version:        3
+Version:        4
 Release:        1%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
@@ -95,10 +95,13 @@ make %{?_smp_mflags} check
 
 %files -n lib%{name}-devel
 %dir %{_includedir}/%{name}
+%{_includedir}/%{name}/buf.h
 %{_includedir}/%{name}/b64.h
 %{_includedir}/%{name}/jwk.h
 %{_includedir}/%{name}/jws.h
 %{_includedir}/%{name}/jwe.h
+%{_includedir}/%{name}/jose.h
+%{_includedir}/%{name}/hooks.h
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
@@ -118,5 +121,8 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/%{name}-zlib.pc
 
 %changelog
+* Fri Sep 23 2016 Nathaniel McCallum <npmccallum@redhat.com> - 4-1
+- New upstream release
+
 * Wed Sep 21 2016 Nathaniel McCallum <npmccallum@redhat.com> - 3-1
 - Initial package
