@@ -66,6 +66,9 @@ This package contains development files for lib%{name}-zlib.
 %setup -q
 
 %build
+%if 0%{?rhel}
+%__sed -i 's|libcrypto >= 1\.0\.2|libcrypto >= 1\.0\.1|' configure jose-openssl.pc.in
+%endif
 %configure
 make %{?_smp_mflags}
 
