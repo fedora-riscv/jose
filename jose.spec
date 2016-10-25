@@ -1,5 +1,5 @@
 Name:           jose
-Version:        5
+Version:        6
 Release:        1%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
@@ -126,6 +126,9 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/%{name}-zlib.pc
 
 %changelog
+* Tue Oct 25 2016 Nathaniel McCallum <npmccallum@redhat.com> - 6-1
+- New upstream release
+
 * Fri Oct 14 2016 Nathaniel McCallum <npmccallum@redhat.com> - 5-1
 - New upstream release
 
