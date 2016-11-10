@@ -1,6 +1,6 @@
 Name:           jose
 Version:        6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
@@ -126,6 +126,9 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/%{name}-zlib.pc
 
 %changelog
+* Thu Nov 10 2016 Nathaniel McCallum <npmccallum@redhat.com> - 6-2
+- Rebuild to pick up new architectures
+
 * Tue Oct 25 2016 Nathaniel McCallum <npmccallum@redhat.com> - 6-1
 - New upstream release
 
