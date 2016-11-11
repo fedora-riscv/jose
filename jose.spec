@@ -1,6 +1,6 @@
 Name:           jose
 Version:        6
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
@@ -71,6 +71,7 @@ This package contains development files for lib%{name}-zlib.
 %__sed -i 's| -Wl,--push-state||' jose-openssl.pc.in jose-zlib.pc.in
 %__sed -i 's| -Wl,--pop-state||' jose-openssl.pc.in jose-zlib.pc.in
 %endif
+%__sed -i 's|s:i|s:I|' lib/openssl/oct.c
 %configure
 make %{?_smp_mflags}
 
@@ -126,6 +127,9 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/%{name}-zlib.pc
 
 %changelog
+* Fri Nov 11 2016 Nathaniel McCallum <npmccallum@redhat.com> - 6-3
+- Fix build on big-endian platforms (fix already upstream)
+
 * Thu Nov 10 2016 Nathaniel McCallum <npmccallum@redhat.com> - 6-2
 - Rebuild to pick up new architectures
 
