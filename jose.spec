@@ -1,6 +1,6 @@
 Name:           jose
 Version:        6
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
@@ -19,7 +19,8 @@ Object Signing and Encryption (JOSE) objects. José provides a full
 crypto stack including key generation, signing and encryption.
 
 %package -n lib%{name}
-Summary:    Library implementing JSON Object Signing and Encryption
+Summary:        Library implementing JSON Object Signing and Encryption
+Conflicts:      jansson < 2.9
 
 %description -n lib%{name}
 This package contains a C library for performing JOSE operations.
@@ -127,6 +128,9 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/%{name}-zlib.pc
 
 %changelog
+* Wed Jan 18 2017 Nathaniel McCallum <npmccallum@redhat.com> - 6-4
+- Add a conflicts on old versions of jansson
+
 * Fri Nov 11 2016 Nathaniel McCallum <npmccallum@redhat.com> - 6-3
 - Fix build on big-endian platforms (fix already upstream)
 
