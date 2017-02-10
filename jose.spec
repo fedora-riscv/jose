@@ -1,6 +1,6 @@
 Name:           jose
 Version:        6
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
@@ -128,6 +128,9 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/%{name}-zlib.pc
 
 %changelog
+* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Wed Jan 18 2017 Nathaniel McCallum <npmccallum@redhat.com> - 6-4
 - Add a conflicts on old versions of jansson
 
