@@ -1,6 +1,6 @@
 Name:           jose
-Version:        6
-Release:        5%{?dist}
+Version:        7
+Release:        1%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
@@ -72,7 +72,6 @@ This package contains development files for lib%{name}-zlib.
 %__sed -i 's| -Wl,--push-state||' jose-openssl.pc.in jose-zlib.pc.in
 %__sed -i 's| -Wl,--pop-state||' jose-openssl.pc.in jose-zlib.pc.in
 %endif
-%__sed -i 's|s:i|s:I|' lib/openssl/oct.c
 %configure
 make %{?_smp_mflags}
 
@@ -128,6 +127,9 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/%{name}-zlib.pc
 
 %changelog
+* Fri Mar 17 2017 Nathaniel McCallum <npmccallum@redhat.com> - 7-1
+- New upstream release
+
 * Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
