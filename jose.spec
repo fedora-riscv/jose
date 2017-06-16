@@ -1,5 +1,5 @@
 Name:           jose
-Version:        8
+Version:        9
 Release:        1%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
@@ -49,7 +49,7 @@ This package contains development files for lib%{name}.
 %if 0%{?rhel}
 %__sed -i 's|libcrypto >= 1\.0\.2|libcrypto >= 1\.0\.1|' configure
 %endif
-%configure
+%configure --disable-openmp
 make %{?_smp_mflags}
 
 %install
@@ -79,6 +79,9 @@ make %{?_smp_mflags} check
 %{_mandir}/man3/jose*.3*
 
 %changelog
+* Fri Jun 16 2017 Nathaniel McCallum <npmccallum@redhat.com> - 9-1
+- New upstream release
+
 * Wed Jun 14 2017 Nathaniel McCallum <npmccallum@redhat.com> - 8-1
 - New upstream release
 
