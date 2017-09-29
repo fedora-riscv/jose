@@ -1,6 +1,6 @@
 Name:           jose
-Version:        9
-Release:        3%{?dist}
+Version:        10
+Release:        1%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
@@ -79,6 +79,9 @@ make %{?_smp_mflags} check
 %{_mandir}/man3/jose*.3*
 
 %changelog
+* Fri Sep 29 2017 Nathaniel McCallum <npmccallum@redhat.com> - 10-1
+- New upstream release
+
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 9-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
