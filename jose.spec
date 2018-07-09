@@ -7,6 +7,7 @@ License:        ASL 2.0
 URL:            https://github.com/latchset/%{name}
 Source0:        https://github.com/latchset/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 
+BuildRequires:  gcc
 BuildRequires:  pkgconfig
 BuildRequires:  jansson-devel >= 2.10
 BuildRequires:  openssl-devel
