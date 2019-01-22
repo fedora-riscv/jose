@@ -61,8 +61,7 @@ rm -rf %{buildroot}/%{_libdir}/lib%{name}.la
 %check
 make %{?_smp_mflags} check
 
-%post -n lib%{name} -p /sbin/ldconfig
-%postun -n lib%{name} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}
 
 %files
 %{_bindir}/%{name}
