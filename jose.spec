@@ -1,6 +1,6 @@
 Name:           jose
 Version:        10
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
@@ -51,7 +51,7 @@ This package contains development files for lib%{name}.
 %__sed -i 's|libcrypto >= 1\.0\.2|libcrypto >= 1\.0\.1|' configure
 %endif
 %configure --disable-openmp
-make %{?_smp_mflags}
+%make_build
 
 %install
 rm -rf %{buildroot}
@@ -59,7 +59,7 @@ rm -rf %{buildroot}
 rm -rf %{buildroot}/%{_libdir}/lib%{name}.la
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %ldconfig_scriptlets -n lib%{name}
 
@@ -79,6 +79,10 @@ make %{?_smp_mflags} check
 %{_mandir}/man3/jose*.3*
 
 %changelog
+* Tue Jul 28 2020 Tom Stellard <tstellar@redhat.com> - 10-8
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
 * Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 10-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
