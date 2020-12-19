@@ -12,6 +12,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  jansson-devel >= 2.10
 BuildRequires:  openssl-devel
 BuildRequires:  zlib-devel
+BuildRequires: make
 Requires: lib%{name}%{?_isa} = %{version}-%{release}
 
 %description
