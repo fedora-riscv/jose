@@ -1,17 +1,21 @@
 Name:           jose
-Version:        10
-Release:        8%{?dist}
+Version:        11
+Release:        1%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
 URL:            https://github.com/latchset/%{name}
-Source0:        https://github.com/latchset/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://github.com/latchset/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
 BuildRequires:  jansson-devel >= 2.10
 BuildRequires:  openssl-devel
 BuildRequires:  zlib-devel
+BuildRequires:  git-core
+BuildRequires:  meson
+BuildRequires:  ninja-build
+BuildRequires:  asciidoc
 Requires: lib%{name}%{?_isa} = %{version}-%{release}
 
 %description
@@ -44,28 +48,26 @@ Obsoletes:      lib%{name}-zlib-devel < %{version}-%{release}
 This package contains development files for lib%{name}.
 
 %prep
-%setup -q
+%autosetup -S git
 
 %build
-%if 0%{?rhel}
-%__sed -i 's|libcrypto >= 1\.0\.2|libcrypto >= 1\.0\.1|' configure
-%endif
-%configure --disable-openmp
-%make_build
+%meson
+%meson_build
 
 %install
 rm -rf %{buildroot}
-%make_install
+%meson_install
 rm -rf %{buildroot}/%{_libdir}/lib%{name}.la
 
 %check
-%make_build check
+%meson_test
 
 %ldconfig_scriptlets -n lib%{name}
 
 %files
 %{_bindir}/%{name}
 %{_mandir}/man1/jose*.1*
+%license COPYING
 
 %files -n lib%{name}
 %license COPYING
@@ -79,6 +81,9 @@ rm -rf %{buildroot}/%{_libdir}/lib%{name}.la
 %{_mandir}/man3/jose*.3*
 
 %changelog
+* Fri May 07 2021 Sergio Correia <scorreia@redhat.com> - 11-1
+- Update to new jose upstream release, v11.
+
 * Tue Jul 28 2020 Tom Stellard <tstellar@redhat.com> - 10-8
 - Use make macros
 - https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
