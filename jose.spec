@@ -1,6 +1,6 @@
 Name:           jose
 Version:        11
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
@@ -81,6 +81,9 @@ rm -rf %{buildroot}/%{_libdir}/lib%{name}.la
 %{_mandir}/man3/jose*.3*
 
 %changelog
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 11-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Fri May 07 2021 Sergio Correia <scorreia@redhat.com> - 11-2
 - Update sources file to v11.
 
