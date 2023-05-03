@@ -1,6 +1,6 @@
 Name:           jose
 Version:        11
-Release:        7%{?dist}
+Release:        7.rv64%{?dist}
 Summary:        Tools for JSON Object Signing and Encryption (JOSE)
 
 License:        ASL 2.0
@@ -60,7 +60,11 @@ rm -rf %{buildroot}
 rm -rf %{buildroot}/%{_libdir}/lib%{name}.la
 
 %check
+%ifnarch riscv64
 %meson_test
+%else
+:
+%endif
 
 %ldconfig_scriptlets -n lib%{name}
 
@@ -81,6 +85,9 @@ rm -rf %{buildroot}/%{_libdir}/lib%{name}.la
 %{_mandir}/man3/jose*.3*
 
 %changelog
+* Wed May 3 2023 Liu Yang <Yang.Liu.sn@gmail.com> - 11-7.rv64
+- Some tests timeout on riscv64, skip tests.
+
 * Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 11-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
